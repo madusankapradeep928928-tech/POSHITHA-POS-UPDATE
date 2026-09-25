@@ -116,7 +116,7 @@ class AppErrorBoundary extends React.Component {
 // Translations Dictionary (Sinhala, English, Tamil)
 const translations = {
   en: {
-    loginTitle: "Poshitha Pos System",
+    loginTitle: "Poshitha Pos System v1.0.2",
     shopRegistration: "Shop Registration",
     username: "Username",
     password: "Password",
