@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* General Reset & Layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f4f6;
+}
+
+/* ==========================================
+   PRINT STYLES FOR THERMAL RECEIPT PRINTER
+   ========================================== */
+@media print {
+  /* Hide every normal UI element */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Display only the Printable Receipt section */
+  .printable-receipt,
+  .printable-receipt * {
+    visibility: visible;
+  }
+
+  .printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm; /* Standard Thermal Receipt Width */
+    margin: 0;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #000;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* මුළු රිසිට්පතම මැදට ගැනීමට */
+    text-align: left;
+    font-size: 13px; /* මුළු රිසිට්පතේම මූලික අකුරු ප්‍රමාණය ටිකක් වැඩි කරයි */
+  }
+
+  /* Force hide all elements marked with .no-print */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* Logo Styling: 4.5cm x 4.5cm Square size, Perfectly Centered */
+  .printable-receipt img, 
+  .printable-receipt .receipt-logo {
+    display: block !important;
+    width: 4.5cm !important;
+    height: 4.5cm !important;
+    max-width: 4.5cm !important;
+    max-height: 4.5cm !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Shop Name, Address, Phone and Footer (Thank you) styling: Larger & Bold */
+  .printable-receipt h1,
+  .printable-receipt h2,
+  .printable-receipt h3,
+  .printable-receipt .shop-name,
+  .printable-receipt .shop-info,
+  .printable-receipt .receipt-header,
+  .printable-receipt .footer-message,
+  .printable-receipt p:first-of-type {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+
+  /* Item list font size and alignment fix */
+  .printable-receipt .item-row,
+  .printable-receipt table,
+  .printable-receipt tr,
+  .printable-receipt td,
+  .printable-receipt th,
+  .printable-receipt .items-list {
+    font-size: 14px !important; /* අයිතමවල අකුරු ප්‍රමාණය වැඩි කරයි */
+    text-align: left !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+}
